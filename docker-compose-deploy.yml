@@ -1,0 +1,9 @@
+version: '2'
+services:
+  deploy:
+    build: deploy
+    volumes:
+      - ./deploy/github.secret:/var/tmp/github.secret:ro
+      - ./deploy/aws.secret:/root/.aws/credentials:ro
+      - ./deploy/deploy.sh:/deploy.sh
+    command: "/deploy.sh"
