@@ -8,9 +8,12 @@ RUN apt-get update \
     git \
     python
 
-# Prepare
-RUN touch ~/.ssh/known_hosts
+# Prepare git
+RUN mkdir -p /root/.ssh
+RUN touch /root/.ssh/known_hosts
 RUN ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+# Prepare AWS
 RUN mkdir -p /root/.aws
 RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
 RUN unzip awscli-bundle.zip
