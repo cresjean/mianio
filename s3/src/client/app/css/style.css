@@ -6,6 +6,14 @@ body {
   height: 100%;
 }
 
+.center {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100%;
+  font-size:4vh;
+}
+
 .blinking-cursor {
   color: #2E3D48;
   -webkit-animation: 1s blink step-end infinite;
