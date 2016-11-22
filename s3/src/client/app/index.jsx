@@ -1,10 +1,35 @@
 import React from 'react';
 import {render} from 'react-dom';
-require("./css/style.css");
+import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
+import NavbarComponent from './components/navbar.jsx';
+require("./sass/style.scss");
+
+function BlinkingCursor() {
+  return <span className="blinking-cursor">_</span>;
+}
+
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        input: ''
+    };
+    this.handleinpuntChange = this.handleinpuntChange.bind(this)
+  };
+
+  handleinpuntChange(value) {
+    this.setState({input: value});
+
+  }
   render () {
     return (
-      <div className="center">面流科技<span className="blinking-cursor">_</span></div>
+      <div>
+        <NavbarComponent forminput={this.state.input} onChange={this.handleinpuntChange} />
+        <div className="center">
+            {this.state.input}
+            <BlinkingCursor />
+        </div>
+      </div>
     );
   }
 }
