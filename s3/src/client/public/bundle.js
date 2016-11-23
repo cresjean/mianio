@@ -22476,12 +22476,6 @@
 	
 	var _search2 = _interopRequireDefault(_search);
 	
-	var _reactRedux = __webpack_require__(/*! react-redux */ 468);
-	
-	var _redux = __webpack_require__(/*! redux */ 445);
-	
-	var _index = __webpack_require__(/*! ../actions/index.js */ 477);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	__webpack_require__(/*! ../sass/navbar.scss */ 441);
@@ -22530,17 +22524,7 @@
 	  );
 	};
 	
-	function mapStatetoProps(state) {
-	  return {
-	    searchinput: state.navbar.searchinput
-	  };
-	}
-	
-	function matchDispatchToPros(dispatch) {
-	  return (0, _redux.bindActionCreators)({ enterSearch: _index.enterSearch }, dispatch);
-	}
-	
-	exports.default = (0, _reactRedux.connect)(mapStatetoProps, matchDispatchToPros)(NavbarComponent);
+	exports.default = NavbarComponent;
 
 /***/ },
 /* 188 */
@@ -43370,17 +43354,16 @@
 	});
 	
 	exports.default = function () {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	  var action = arguments[1];
 	
-	  console.log(action);
 	  switch (action.type) {
 	    case 'ENTER_SEARCH':
 	      return { searchinput: action.payload };
 	      break;
 	    default:
 	      return {
-	        searchinput: 'hi there again'
+	        searchinput: 'welcome to mianio'
 	      };
 	  }
 	};
@@ -44150,7 +44133,6 @@
 	  value: true
 	});
 	var enterSearch = exports.enterSearch = function enterSearch(input) {
-	  console.log(input.target.value);
 	  return {
 	    type: "ENTER_SEARCH",
 	    payload: input.target.value

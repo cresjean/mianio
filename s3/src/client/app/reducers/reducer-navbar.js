@@ -1,14 +1,11 @@
-export default function(state=null, action) {
-  console.log(action);
+export default function(state={}, action) {
   switch (action.type) {
     case 'ENTER_SEARCH':
       return { searchinput: action.payload }
       break;
     default:
-    return {
-      searchinput: 'hi there again'
-    }
+      return {
+        searchinput: 'welcome to mianio'
+      }
   }
-
-
 }

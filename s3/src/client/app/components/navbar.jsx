@@ -5,9 +5,6 @@ import { NavItem } from 'react-bootstrap';
 import { NavDropdown } from 'react-bootstrap';
 import { MenuItem } from 'react-bootstrap';
 import  Form  from './search.jsx';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { enterSearch } from '../actions/index.js';
 
 require ('../sass/navbar.scss');
 const NavbarComponent = (props) => {
@@ -35,14 +32,5 @@ const NavbarComponent = (props) => {
     )
 }
 
-function mapStatetoProps(state) {
-  return {
-    searchinput: state.navbar.searchinput
-  }
-}
 
-function matchDispatchToPros(dispatch) {
-  return bindActionCreators({enterSearch: enterSearch}, dispatch);
-}
-
-export default connect(mapStatetoProps, matchDispatchToPros)(NavbarComponent);
+export default NavbarComponent;
