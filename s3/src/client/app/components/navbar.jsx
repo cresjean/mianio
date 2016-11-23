@@ -4,7 +4,11 @@ import { Nav } from 'react-bootstrap';
 import { NavItem } from 'react-bootstrap';
 import { NavDropdown } from 'react-bootstrap';
 import { MenuItem } from 'react-bootstrap';
-import  FormExample  from './search.jsx';
+import  Form  from './search.jsx';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { enterSearch } from '../actions/index.js';
+
 require ('../sass/navbar.scss');
 const NavbarComponent = (props) => {
 
@@ -14,28 +18,31 @@ const NavbarComponent = (props) => {
           <Navbar.Brand>
             <a href="#">面流IO</a>
           </Navbar.Brand>
-          <FormExample value={ props.forminput } onChange={ props.onChange }  />
           <Navbar.Toggle />
         </Navbar.Header>
+
+
         <Navbar.Collapse>
-          <Nav>
-            <NavItem eventKey={1} href="#">{ props.forminput }</NavItem>
-            <NavItem eventKey={2} href="#">Link</NavItem>
-            <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-              <MenuItem eventKey={3.1}>Action</MenuItem>
-              <MenuItem eventKey={3.2}>Another action</MenuItem>
-              <MenuItem eventKey={3.3}>Something else here</MenuItem>
-              <MenuItem divider />
-              <MenuItem eventKey={3.3}>Separated link</MenuItem>
-            </NavDropdown>
-          </Nav>
+          <Navbar.Form pullLeft>
+            <Form />
+          </Navbar.Form>
           <Nav pullRight>
-            <NavItem eventKey={1} href="#">Link Right</NavItem>
-            <NavItem eventKey={2} href="#">Link Right</NavItem>
+            <NavItem eventKey={1} href="#">Login</NavItem>
+            <NavItem eventKey={2} href="#">SignUp</NavItem>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
     )
 }
 
-export default NavbarComponent;
+function mapStatetoProps(state) {
+  return {
+    searchinput: state.navbar.searchinput
+  }
+}
+
+function matchDispatchToPros(dispatch) {
+  return bindActionCreators({enterSearch: enterSearch}, dispatch);
+}
+
+export default connect(mapStatetoProps, matchDispatchToPros)(NavbarComponent);

@@ -2,11 +2,14 @@ import React from 'react';
 import {render} from 'react-dom';
 import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 import NavbarComponent from './components/navbar.jsx';
+import { createStore } from 'redux';
+import allReducers from './reducers';
+import { Provider } from 'react-redux';
+import SearchResult from './components/result.jsx';
+
 require("./sass/style.scss");
 
-function BlinkingCursor() {
-  return <span className="blinking-cursor">_</span>;
-}
+const store = createStore(allReducers);
 
 class App extends React.Component {
   constructor(props) {
@@ -23,13 +26,12 @@ class App extends React.Component {
   }
   render () {
     return (
-      <div>
-        <NavbarComponent forminput={this.state.input} onChange={this.handleinpuntChange} />
-        <div className="center">
-            {this.state.input}
-            <BlinkingCursor />
+      <Provider store={store}>
+        <div>
+          <NavbarComponent forminput={this.state.input} onChange={this.handleinpuntChange} />
+          <SearchResult />
         </div>
-      </div>
+    </Provider>
     );
   }
 }

@@ -2,30 +2,15 @@ import React from 'react';
 import { FormGroup } from 'react-bootstrap';
 import { ControlLabel } from 'react-bootstrap';
 import { FormControl } from 'react-bootstrap';
-
 import { HelpBlock } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { enterSearch } from '../actions/index.js';
 
-class FormExample extends React.Component {
+class Form extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-        value: this.props.value
-    };
-    this.handleChange = this.handleChange.bind(this);
-  };
 
-  getValidationState() {
-    const length = this.state.value.length;
-    if (length > 10) return 'success';
-    else if (length > 5) return 'warning';
-    else if (length > 0) return 'error';
-  };
-
-  handleChange(e) {
-
-    this.setState({ value: e.target.value });
-    this.props.onChange(e.target.value);
-    console.log(this.state.value);
   };
 
   render() {
@@ -33,21 +18,27 @@ class FormExample extends React.Component {
       <form>
         <FormGroup
           controlId="formBasicText"
-          validationState={this.getValidationState()}
+
         >
-          <ControlLabel>Working example with validation</ControlLabel>
           <FormControl
             type="text"
-            value={this.state.value}
+            value={this.props.searchinput}
             placeholder="Enter text"
-            onChange={ this.handleChange }
+            onChange={ (e) => this.props.enterSearch(e) }
           />
-          <FormControl.Feedback />
-          <HelpBlock>Validation is based on string length.</HelpBlock>
-        </FormGroup>
+          </FormGroup>
       </form>
     );
   }
 };
+function mapStatetoProps(state) {
+  return {
+    searchinput: state.navbar.searchinput
+  }
+}
 
-export default FormExample;
+function matchDispatchToPros(dispatch) {
+  return bindActionCreators({enterSearch: enterSearch}, dispatch);
+}
+
+export default connect(mapStatetoProps, matchDispatchToPros)(Form);
