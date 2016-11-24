@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import NavBarReducer from './reducer-navbar';
+import SearchReducer from './reducer-search';
+import ResultReducer from './reducer-result';
 
 const allReducers = combineReducers({
-  navbar: NavBarReducer
+  search: SearchReducer,
+  result: ResultReducer
 });
 
 export default allReducers;
