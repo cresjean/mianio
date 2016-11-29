@@ -1,14 +1,14 @@
 import React from 'react';
-import thunkMiddleware from 'redux-thunk';
 import { FormGroup } from 'react-bootstrap';
 import { ControlLabel } from 'react-bootstrap';
 import { FormControl } from 'react-bootstrap';
 import { HelpBlock } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchSearch } from '../actions/index.js';
+import { fetchSearch } from '../../actions/index.js';
+require ('./search.scss');
 
-class Form extends React.Component {
+class SearchForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,12 +23,12 @@ class Form extends React.Component {
   }
   render() {
     return (
-      <form>
+      <form className="search-form">
         <FormGroup controlId="formBasicText">
           <FormControl
             type="text"
             value={this.state.searchinput}
-            placeholder="Enter text"
+            placeholder="搜索关键字"
             onChange={ (e) => this.handleChange(e) }
           />
           </FormGroup>
@@ -42,8 +42,17 @@ function mapStatetoProps(state) {
   }
 }
 
-function matchDispatchToPros(dispatch) {
-  return bindActionCreators({fetchSearch: fetchSearch}, dispatch);
+const matchDispatchToPros = (dispatch) => {
+  return {
+    fetchSearch: (e) => {
+      dispatch(fetchSearch(e))
+    }
+  }
 }
 
-export default connect(mapStatetoProps, matchDispatchToPros)(Form);
+
+// function matchDispatchToPros(dispatch) {
+//   return bindActionCreators({fetchSearch: fetchSearch}, dispatch);
+// }
+
+export default connect(mapStatetoProps, matchDispatchToPros)(SearchForm);

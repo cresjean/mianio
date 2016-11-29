@@ -6,7 +6,6 @@ export default function(state={}, action) {
       return { searchinput: action.payload, searchresult: action.result }
       break;
     default:
-      console.debug("Me");
       return state;
   }
 }

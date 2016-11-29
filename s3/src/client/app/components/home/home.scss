@@ -1,0 +1,20 @@
+@import '../common/sass/variables.scss';
+html, body {
+  font-family: 'Roboto', sans-serif;
+  height: 100%;
+  background-color: $body-background-color;
+}
+.home {
+  padding: 0;
+}
+.center {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100%;
+  font-size:5vh;
+}
+.main-panel-container {
+  padding-left: 0;
+  padding-right: 0;
+}

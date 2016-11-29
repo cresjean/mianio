@@ -4,6 +4,8 @@ export const REQUEST_GETS = 'REQUEST_GETS';
 export const RECEIVE_GETS = 'RECEIVE_GETS';
 export const CLICK_ARTIST = 'CLICK_ARTIST';
 
+
+// action creators
 export const clickArtist = (clicked) => {
   return dispatch => {
       return fetch(`https://api.spotify.com/v1/artists/${clicked}/albums`)
@@ -13,7 +15,6 @@ export const clickArtist = (clicked) => {
 }
 
 const returnClickArtist = (json) => {
-  console.debug(json);
   return {
     type: CLICK_ARTIST,
     albums: json.items
