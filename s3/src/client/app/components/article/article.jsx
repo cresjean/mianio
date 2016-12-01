@@ -5,15 +5,18 @@ require ('./article.scss');
 class Article extends React.Component {
   constructor(props) {
     super(props);
-    console.debug("Article");
-  }
 
+  }
   render() {
-    return (
-      <div className="article">
-        This is an article <BlinkingCursor />
-      </div>
-    )
+    if (this.props.article)  {
+      return (
+        <div className="article">
+         {this.props.article.title}<BlinkingCursor />
+        </div>
+      )
+    } else {
+      return null;
+    }
   }
 }
 

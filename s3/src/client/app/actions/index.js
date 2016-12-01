@@ -3,9 +3,24 @@ export const ENTER_SEARCH = 'ENTER_SEARCH';
 export const REQUEST_GETS = 'REQUEST_GETS';
 export const RECEIVE_GETS = 'RECEIVE_GETS';
 export const CLICK_ARTIST = 'CLICK_ARTIST';
+export const ARTICLES_LOADED = 'ARTICLES_LOADED';
 
 
 // action creators
+const returnLoadArticles = (json) => {
+  return {
+    type: ARTICLES_LOADED,
+    articles: json
+  }
+}
+export const loadArticles = () => {
+  return dispatch => {
+    return fetch(`api/articles`)
+    .then(response => response.json())
+    .then(json => dispatch(returnLoadArticles(json)))
+  }
+}
+
 export const clickArtist = (clicked) => {
   return dispatch => {
       return fetch(`https://api.spotify.com/v1/artists/${clicked}/albums`)

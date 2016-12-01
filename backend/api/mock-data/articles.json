@@ -1,0 +1,12 @@
+[
+  {
+    "id": 311,
+    "title": "Read from JSON",
+    "abstract": "Writing JSON.stringify() and then fs.writeFile() and JSON.parse() with fs.readFile() enclosed in try/catch blocks became annoying."
+  },
+  {
+    "id": 123,
+    "title": "Write into JSON",
+    "abstract": "Writing JSON.stringify() and then fs.writeFile() and JSON.parse() with fs.readFile() enclosed in try/catch blocks became annoying."
+  }
+]
