@@ -11,7 +11,7 @@ class Articles extends React.Component {
     console.debug("Articles Component Cons");
   }
 
-  componentWillMount() {
+  componentDidMount() {
     console.debug("Articles components will mount");
     const { loadArticles } = this.props;
     loadArticles();
@@ -23,11 +23,9 @@ class Articles extends React.Component {
         <div>
             {
                 this.props.articles.map(function(object) {
-                  console.log("One object");
                   return <Article key={object.id} article={object} />
                 })
             }
-              <Article />
         </div>
       );
     } else {

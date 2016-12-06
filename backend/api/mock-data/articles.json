@@ -2,10 +2,20 @@
   {
     "id": 311,
     "title": "Read from JSON",
-    "abstract": "Writing JSON.stringify() and then fs.writeFile() and JSON.parse() with fs.readFile() enclosed in try/catch blocks became annoying."
+    "created": 1481007027,
+    "tags": [{
+      "id": 1234,
+      "name": "EC2"
+      }, {
+        "id": 1235,
+        "name": "S3"
+        }],
+    "abstract": "Many people don’t read a single book after they complete their formal education. In his wealth attraction seminar, Dan Kennedy said that 80% of the books purchased on Amazon are not for personal consumption but as gifts."
   },
   {
     "id": 123,
+    "created": 1481000027,
+    "tags":[],
     "title": "Write into JSON",
     "abstract": "Writing JSON.stringify() and then fs.writeFile() and JSON.parse() with fs.readFile() enclosed in try/catch blocks became annoying."
   }

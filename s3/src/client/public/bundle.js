@@ -67,7 +67,7 @@
 	
 	var _redux = __webpack_require__(/*! redux */ 234);
 	
-	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 540);
+	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 552);
 	
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 	
@@ -28897,11 +28897,9 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	// import SearchResult from '../result.jsx';
-	// import Articles from '../articles/articles.jsx';
 	
-	
-	__webpack_require__(/*! ./home.scss */ 538);
+	__webpack_require__(/*! ../common/sass/global.scss */ 548);
+	__webpack_require__(/*! ./home.scss */ 550);
 	
 	var Home = function (_React$Component) {
 	  _inherits(Home, _React$Component);
@@ -49647,7 +49645,7 @@
 	
 	var _articles2 = _interopRequireDefault(_articles);
 	
-	var _sidebar = __webpack_require__(/*! ../sidebar/sidebar.jsx */ 537);
+	var _sidebar = __webpack_require__(/*! ../sidebar/sidebar.jsx */ 539);
 	
 	var _sidebar2 = _interopRequireDefault(_sidebar);
 	
@@ -49728,8 +49726,8 @@
 	  }
 	
 	  _createClass(Articles, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
 	      console.debug("Articles components will mount");
 	      var loadArticles = this.props.loadArticles;
 	
@@ -49743,10 +49741,8 @@
 	          'div',
 	          null,
 	          this.props.articles.map(function (object) {
-	            console.log("One object");
 	            return _react2.default.createElement(_article2.default, { key: object.id, article: object });
-	          }),
-	          _react2.default.createElement(_article2.default, null)
+	          })
 	        );
 	      } else {
 	        return null;
@@ -49788,11 +49784,9 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 272);
+	
 	var _reactDom = __webpack_require__(/*! react-dom */ 32);
-	
-	var _blinkingCursor = __webpack_require__(/*! ../blinking-cursor/blinking-cursor.jsx */ 541);
-	
-	var _blinkingCursor2 = _interopRequireDefault(_blinkingCursor);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -49802,7 +49796,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	__webpack_require__(/*! ./article.scss */ 544);
+	__webpack_require__(/*! ./article.scss */ 537);
 	
 	var Article = function (_React$Component) {
 	  _inherits(Article, _React$Component);
@@ -49820,8 +49814,32 @@
 	        return _react2.default.createElement(
 	          'div',
 	          { className: 'article' },
-	          this.props.article.title,
-	          _react2.default.createElement(_blinkingCursor2.default, null)
+	          _react2.default.createElement(
+	            _reactBootstrap.Grid,
+	            null,
+	            _react2.default.createElement(
+	              _reactBootstrap.Row,
+	              { className: 'showGrid' },
+	              _react2.default.createElement(
+	                _reactBootstrap.Col,
+	                { xs: 12 },
+	                _react2.default.createElement('i', { className: 'fa fa-tags', 'aria-hidden': 'true' })
+	              )
+	            ),
+	            _react2.default.createElement(
+	              _reactBootstrap.Row,
+	              { className: 'showGrid' },
+	              _react2.default.createElement(
+	                _reactBootstrap.Col,
+	                { xs: 12 },
+	                _react2.default.createElement(
+	                  'h1',
+	                  null,
+	                  this.props.article.title
+	                )
+	              )
+	            )
+	          )
 	        );
 	      } else {
 	        return null;
@@ -49836,6 +49854,52 @@
 
 /***/ },
 /* 537 */
+/*!********************************************************!*\
+  !*** ./src/client/app/components/article/article.scss ***!
+  \********************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../../../../~/css-loader!./../../../../../~/sass-loader!./article.scss */ 538);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../../../../~/style-loader/addStyles.js */ 270)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./article.scss", function() {
+				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./article.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 538 */
+/*!***************************************************************************************!*\
+  !*** ./~/css-loader!./~/sass-loader!./src/client/app/components/article/article.scss ***!
+  \***************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../../../../~/css-loader/lib/css-base.js */ 264)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".article {\n  height: 40vh;\n  padding: 5px 10px;\n  background-color: #FFFFFF; }\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 539 */
 /*!*******************************************************!*\
   !*** ./src/client/app/components/sidebar/sidebar.jsx ***!
   \*******************************************************/
@@ -49889,7 +49953,61 @@
 	exports.default = Sidebar;
 
 /***/ },
-/* 538 */
+/* 540 */,
+/* 541 */,
+/* 542 */,
+/* 543 */,
+/* 544 */,
+/* 545 */,
+/* 546 */,
+/* 547 */,
+/* 548 */
+/*!***********************************************************!*\
+  !*** ./src/client/app/components/common/sass/global.scss ***!
+  \***********************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../../../../../~/css-loader!./../../../../../../~/sass-loader!./global.scss */ 549);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../../../../../~/style-loader/addStyles.js */ 270)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../../../node_modules/css-loader/index.js!./../../../../../../node_modules/sass-loader/index.js!./global.scss", function() {
+				var newContent = require("!!./../../../../../../node_modules/css-loader/index.js!./../../../../../../node_modules/sass-loader/index.js!./global.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 549 */
+/*!******************************************************************************************!*\
+  !*** ./~/css-loader!./~/sass-loader!./src/client/app/components/common/sass/global.scss ***!
+  \******************************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../../../../../~/css-loader/lib/css-base.js */ 264)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "html, body {\n  font-size: 13px; }\n\nh1 {\n  font-size: 15px;\n  margin-top: 10px; }\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 550 */
 /*!**************************************************!*\
   !*** ./src/client/app/components/home/home.scss ***!
   \**************************************************/
@@ -49898,7 +50016,7 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../../../~/css-loader!./../../../../../~/sass-loader!./home.scss */ 539);
+	var content = __webpack_require__(/*! !./../../../../../~/css-loader!./../../../../../~/sass-loader!./home.scss */ 551);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(/*! ./../../../../../~/style-loader/addStyles.js */ 270)(content, {});
@@ -49918,7 +50036,7 @@
 	}
 
 /***/ },
-/* 539 */
+/* 551 */
 /*!*********************************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./src/client/app/components/home/home.scss ***!
   \*********************************************************************************/
@@ -49935,7 +50053,7 @@
 
 
 /***/ },
-/* 540 */
+/* 552 */
 /*!************************************!*\
   !*** ./~/redux-thunk/lib/index.js ***!
   \************************************/
@@ -49964,128 +50082,6 @@
 	thunk.withExtraArgument = createThunkMiddleware;
 	
 	exports['default'] = thunk;
-
-/***/ },
-/* 541 */
-/*!***********************************************************************!*\
-  !*** ./src/client/app/components/blinking-cursor/blinking-cursor.jsx ***!
-  \***********************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	__webpack_require__(/*! ./blinking-cursor.scss */ 542);
-	var BlinkingCursor = function BlinkingCursor() {
-	  return _react2.default.createElement(
-	    'span',
-	    { className: 'blinking-cursor' },
-	    '_'
-	  );
-	};
-	
-	exports.default = BlinkingCursor;
-
-/***/ },
-/* 542 */
-/*!************************************************************************!*\
-  !*** ./src/client/app/components/blinking-cursor/blinking-cursor.scss ***!
-  \************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(/*! !./../../../../../~/css-loader!./../../../../../~/sass-loader!./blinking-cursor.scss */ 543);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../../../~/style-loader/addStyles.js */ 270)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./blinking-cursor.scss", function() {
-				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./blinking-cursor.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 543 */
-/*!*******************************************************************************************************!*\
-  !*** ./~/css-loader!./~/sass-loader!./src/client/app/components/blinking-cursor/blinking-cursor.scss ***!
-  \*******************************************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ./../../../../../~/css-loader/lib/css-base.js */ 264)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".blinking-cursor {\n  color: #2E3D48;\n  -webkit-animation: 1s blink step-end infinite;\n  -moz-animation: 1s blink step-end infinite;\n  -ms-animation: 1s blink step-end infinite;\n  -o-animation: 1s blink step-end infinite;\n  animation: 1s blink step-end infinite; }\n\n@keyframes \"blink\" {\n  from, to {\n    color: transparent; }\n  50% {\n    color: black; } }\n\n@-moz-keyframes blink {\n  from, to {\n    color: transparent; }\n  50% {\n    color: black; } }\n\n@-webkit-keyframes \"blink\" {\n  from, to {\n    color: transparent; }\n  50% {\n    color: black; } }\n\n@-ms-keyframes \"blink\" {\n  from, to {\n    color: transparent; }\n  50% {\n    color: black; } }\n\n@-o-keyframes \"blink\" {\n  from, to {\n    color: transparent; }\n  50% {\n    color: black; } }\n", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 544 */
-/*!********************************************************!*\
-  !*** ./src/client/app/components/article/article.scss ***!
-  \********************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(/*! !./../../../../../~/css-loader!./../../../../../~/sass-loader!./article.scss */ 545);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../../../~/style-loader/addStyles.js */ 270)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./article.scss", function() {
-				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/sass-loader/index.js!./article.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 545 */
-/*!***************************************************************************************!*\
-  !*** ./~/css-loader!./~/sass-loader!./src/client/app/components/article/article.scss ***!
-  \***************************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ./../../../../../~/css-loader/lib/css-base.js */ 264)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".article {\n  height: 40vh;\n  background-color: #FFFFFF; }\n", ""]);
-	
-	// exports
-
 
 /***/ }
 /******/ ]);
