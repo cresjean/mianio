@@ -15,7 +15,10 @@
   {
     "id": 123,
     "created": 1481000027,
-    "tags":[],
+    "tags":[{
+      "id": 3123,
+      "name": "API Gateway"
+      }],
     "title": "Write into JSON",
     "abstract": "Writing JSON.stringify() and then fs.writeFile() and JSON.parse() with fs.readFile() enclosed in try/catch blocks became annoying."
   }
