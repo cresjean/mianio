@@ -7,10 +7,10 @@ const MainPanel = () => {
   return (
       <Grid>
         <Row className="show-grid">
-           <Col xs={12} md={8}>
+           <Col xs={12}>
              <Articles />
             </Col>
-           <Col xs={12} md={4}>
+           <Col xs={12}>
              <Sidebar />
            </Col>
          </Row>

@@ -3,6 +3,7 @@
     "id": 311,
     "title": "Read from JSON",
     "created": 1481007027,
+    "author": {"name": "王安石","id": "u98ybasd"},
     "tags": [{
       "id": 1234,
       "name": "EC2"
@@ -15,6 +16,7 @@
   {
     "id": 123,
     "created": 1481000027,
+    "author": {"name": "王嘉石","id": "u123asd"},
     "tags":[{
       "id": 3123,
       "name": "API Gateway"

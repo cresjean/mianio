@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Col, Row } from 'react-bootstrap';
 import { render } from 'react-dom';
 import moment from 'moment';
-
+import Author from '../author/author.jsx';
 require ('./article.scss');
 class Article extends React.Component {
   constructor(props) {
@@ -39,8 +39,9 @@ class Article extends React.Component {
               </Row>
               <Row className="showGrid">
                 <Col xs={12}>
-                    {moment(this.props.article.created * 1000).format('D MMM')}
-                  </Col>
+                    <Author author={this.props.article.author}/>
+                    {moment(this.props.article.created * 1000).fromNow()}
+                </Col>
               </Row>
               <Row className="showGrid">
                 <Col xs={12}>
@@ -48,9 +49,6 @@ class Article extends React.Component {
                   </Col>
               </Row>
             </Grid>
-
-
-
         </div>
       )
     } else {
