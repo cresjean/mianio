@@ -1,20 +1,25 @@
 import React from 'react';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Link } from 'react-router';
+import { LinkContainer } from 'react-router-bootstrap';
 
 const NavbarComponent = (props) => {
     return (
       <Navbar collapseOnSelect className="navbar">
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="#">面流科技</a>
+
+            <Link to="/">面流科技</Link>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
+
         <Navbar.Collapse>
               <Nav>
-                <NavItem eventKey={1} href="#">文章列表</NavItem>
-                <NavItem eventKey={2} href="#">数据统计</NavItem>
-                </Nav>
+                <LinkContainer to="new">
+                    <NavItem eventKey={1} >New</NavItem>
+                </LinkContainer>
+              </Nav>
         </Navbar.Collapse>
 
       </Navbar>
